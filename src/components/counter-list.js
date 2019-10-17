@@ -11,11 +11,10 @@ export default class CounterList extends React.Component {
 
         this.addCounter = () => {
             this.setState((prevState) => {
-                console.log(prevState)
+                let newCounters = prevState.counters;
+                newCounters.push(new Counter);
 
-                return {
-                    counters: [prevState.counters, new Counter]
-                };
+                return {counters: newCounters};
             });
         }
     }
@@ -23,11 +22,7 @@ export default class CounterList extends React.Component {
     prepareCounters() {
         let counters = this.state.counters;
         
-        return counters.map((item) => {
-            return (
-                <Counter />
-            )
-        })
+        return counters.map(() => <Counter />)
     }
   
     render() {
